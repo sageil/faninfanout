@@ -66,6 +66,15 @@ func primeIntFinder(done <-chan int, randomStream <-chan int) <-chan int {
 	return primes
 }
 
+func MaxParallelism() int {
+	maxProcs := runtime.GOMAXPROCS(0)
+	numCPU := runtime.NumCPU()
+	if maxProcs < numCPU {
+		return maxProcs
+	}
+	return numCPU
+}
+
 func Run_Efficient() {
 	log.SetPrefix("Efficient: ")
 	start := time.Now()
@@ -77,7 +86,7 @@ func Run_Efficient() {
 		return rand.Intn(int(1e9))
 	}
 	randStream := generate(done, randomintFetcher)
-	cpuCount := runtime.NumCPU()
+	cpuCount := MaxParallelism()
 	primeFinderChans := make([]<-chan int, cpuCount)
 	for i := 0; i < cpuCount; i++ {
 		primeFinderChans[i] = primeIntFinder(done, randStream)
