@@ -96,7 +96,7 @@ func Run_Efficient() {
 		log.Println(i)
 	}
 
-	log.Println("Effient fanIn completed in", time.Since(start))
+	log.Println("Efficient fanIn completed in", time.Since(start))
 }
 
 // fan in
