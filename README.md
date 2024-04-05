@@ -24,7 +24,7 @@ To verify the naive implementation of the pattern start the container by running
 docker container run --rm faninout:latest naive
 ```
 
-## Running the code locally
+### Running the code locally
 
 1. To verify the naive implementation of the pattern run
 
@@ -37,6 +37,10 @@ go run cmd/main.go naive
 ```bash
 go run cmd/main.go efficient
 ```
+
+### Exiting the Program
+
+Use Ctrl+C to exit the program
 
 <p align="center">
   <img  src="assets/results.png?raw=true">
